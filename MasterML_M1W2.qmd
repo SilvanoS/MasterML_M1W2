@@ -1,11 +1,42 @@
 ---
-title: "MasterML_M1W2"
+title: "Machine Learning Overview 2"
+author: "Prof.ssa Ileana Baldi<br>UBEP<br>"
+format: 
+  revealjs:
+    self-contained: true
+    transition: fade
+    transition-speed: slow
+    #slide-number: true
+    #footer: "[Master UBEP Web Page](https://www.unipd-ubep.it/masters/machine-learning-and-big-data/)&nbsp;&nbsp;&nbsp;"
+    theme: [moon, custom_ss.scss]
+    preview-links: auto
+    chalkboard: false
+      
+from: markdown+emoji
+execute:
+  echo: true
 ---
 
-## Quarto
+## Course Outline week 2
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+<br/>
 
-```{r}
-1 + 1
-```
+::: incremental
+1.  Big Data
+
+2.  General perspective on Machine Learning
+
+3.  Different types of Learning
+
+    4.  Supervised Learning
+:::
+
+# Big Data 2
+
+::: {.absolute top="0" left="100%"}
+::: sectionhead
+1 [2 3 4]{style="opacity:0.25"}
+:::
+:::
+
+------------------------------------------------------------------------
