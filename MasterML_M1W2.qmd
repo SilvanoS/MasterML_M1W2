@@ -193,3 +193,70 @@ Left panel shows single split; right panel shows multiple splits
 ## Cross-validation
 - CV estimates the test error rate by holding out a subset of the training observations from the fitting process, and then applying the statistical method to those held out observations. 
 - This process can be repeated several times to enable more data to partake in the training of the model, one subset at a time.
+
+
+## Cross-validation
+
+::: {style="font-size: 70%;"}
+
+- CV techniques are used for assessing how the results of a statistical analysis will generalize to an independent dataset
+- Most classical CV estimators split the data ($n$) with a fixed size $n_t$ of the training set
+- Depending on the choice of cardinality
+    + Exhaustive Cross-Validation (that is considering all training sets of a given size $n_t$)
+         + Leave one out cross validation
+         + Leave p-out cross validation
+    + Non-exhaustive Cross-Validation
+         + K-fold cross validation
+         + Repeated random sub-sampling validation
+
+:::
+
+
+## Leave-One-Out (LOO) Cross-Validation
+
+::: {style="font-size: 75%;"}
+
+- Like the _validation_ approach, LOO CV involves splitting the set of observations into two parts. 
+- However, instead of creating two subsets of comparable size, a single observation ($x_1, y_1$) is used for the validation set, and the remaining data make up the training set (i.e. $n_t=n-1$). 
+- Even though the validation set is an unbiased test error, we can imagine that it could be highly variable, since it is based on a single observation.
+- To remedy this, we repeat the procedure _n_ times by alliteratively _leaving_ one observation out, and then computing the average MSE of all _n_ test estimates.
+
+:::
+
+---
+
+::: {.absolute top="20%" left="10%" width="800" height="400"}
+::: {style="text-align: center"}
+![](illLOOCV.png)
+:::
+:::
+
+::: {style="font-size: 70%;"}
+::: {.absolute top="80%" left="20%"}
+
+(An Introduction to Statistical Learning with Applications in R. James G, Witten D, Hastie T, Tibshirani R. Springer 2013)
+
+:::
+:::
+
+## How many folds are needed?
+
+::: {style="font-size: 70%;"}
+
+- With a large number of folds
+    + The bias of the true error rate estimator will be small (the estimator will be very accurate)
+    + The variance of the true error rate estimator will be large
+    + The computational time will be very large as well (many experiments)
+- With a small number of folds
+    + The number of experiments and, therefore, computation time are reduced
+    + The variance of the estimator will be small
+    + The bias of the estimator will be large (conservative or smaller than the true error rate)
+
+:::
+
+    
+$\color{black}{\Uparrow folds}$
+$\color{green}{\Downarrow bias}$
+$\color{red}{\Uparrow variance}$
+$\color{red}{\Uparrow time}$
+
