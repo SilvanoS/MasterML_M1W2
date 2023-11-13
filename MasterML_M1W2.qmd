@@ -32,13 +32,9 @@ execute:
     -   Bootstrap
 :::
 
-
 ## Performance assessment
 
 ::: {.absolute top="20%" left="25%"}
-
-
-
 Loss functions for numerical ouput:
 
 $$
@@ -46,51 +42,60 @@ L(Y,\hat{f}(X))=\begin{cases}
 |Y-\hat{f}(X)| \\ 
 (Y-\hat{f}(X))^2 
 \end{cases}
-$$  
-
-Loss functions for categorical ouput:
 $$
+
+Loss functions for categorical ouput: $$
 L(Y,\hat{f}(X))=\begin{cases} 
 I(Y \ne\hat{f}(X)) \\ 
 -2{log(\hat p_k(X))}
 \end{cases}
 $$
-
 :::
-
 
 ## Test vs training error rate
 
-
 ::: {style="font-size: 70%;"}
-
-- _Training error rate_ is simply the average error from a statistical learning method that uses predictions based on the data that was used to fit the model in the first place:
+-   *Training error rate* is simply the average error from a statistical learning method that uses predictions based on the data that was used to fit the model in the first place:
 
 $$\frac 1 n \sum_{i=1}^n L(y_i,\hat{f}(x_i))$$
 
-- \textcolor {blue}{\emph{Test error rate}} is the average error from using a statistical learning method to predict the response on a _new_ observation:
+-   \textcolor {blue}{\\\\\\\\\\\\\\\\emph{Test error rate}} is the average error from using a statistical learning method to predict the response on a *new* observation:
 
 $$\mathit{E}(L(Y,\hat{f}(X))$$
-
-
 :::
-
 
 ::: {style="font-size: 40%;"}
 ::: {.absolute top="80%" left="25%"}
-
 (qui metto la referenza sulle formule)
 :::
 :::
 
+## Test vs training error rate
 
+-   We utilize the test error rate to measure model performance, since training error rate can dramatically over-estimate real-world performance.
 
-# Big Data 2
-
-::: {.absolute top="0" left="100%"}
-::: sectionhead
-1 [2 3 4]{style="opacity:0.25"}
+::: {.absolute top="35%" left="25%" width="550" height="275"}
+::: {style="text-align: center"}
+![](BV.png)
 :::
 :::
 
-------------------------------------------------------------------------
+::: {style="font-size: 50%;"}
+::: {.absolute top="88%" left="20%"}
+(The Elements of Statistical Learning. Hastie T, Tibshirani R, Friedman. Springer 2008)
+:::
+:::
+
+## Test error
+
+There are two common approaches to estimate test error:
+
+1.  We can directly estimate the test error, using either a validation set approach or a cross-validation approach.
+
+2.  We can indirectly estimate test error by making an adjustment to the training error to account for the bias due to overfitting (e.g. AIC, BIC,...)
+
+
+## Goals
+
+-   [Model selection]{style="color:#5085a5;"}: estimating the performance of different models in order to choose the best one.
+-   [Model assessment]{style="color:#5085a5;"}: having chosen a final model, estimating its test error on new data.
