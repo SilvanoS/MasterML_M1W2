@@ -99,3 +99,97 @@ There are two common approaches to estimate test error:
 
 -   [Model selection]{style="color:#5085a5;"}: estimating the performance of different models in order to choose the best one.
 -   [Model assessment]{style="color:#5085a5;"}: having chosen a final model, estimating its test error on new data.
+
+
+## Solutions
+In a data-rich situation, the best approach for both problems is
+to randomly divide the dataset into three parts: 
+
+- a training set (usually $50\%n$) 
+    + to fit the model
+- a validation set ($\sim 25\%n$)
+    + to estimate prediction error for model selection
+- a test set ($\sim 25\%n$)
+    + for assessment of the test error of the final chosen model
+
+
+## Solutions 
+
+<br>
+
+- Sometimes, simply splitting the data to obtain testing and training dataset is not recommended due to the small size of the sample... 
+- Here we instead consider a class of methods that estimate
+the test error by holding out a subset of the training
+observations from the splitting process, and then applying the
+statistical learning method to those held out observations
+
+
+## From validation to cross-validation (CV)
+- Training an algorithm and evaluating its statistical performance on the same data yields an overoptimistic result.
+- CV was raised to fix this issue, starting from the remark that testing the output of the algorithm on new data would yield a good estimate of its performance
+- In most real applications, only a limited amount of data is available, which leads to the idea of splitting the data
+
+## Data splitting or Hold out 
+
+::: {style="font-size: 80%;"}
+
+- The more basic validation set approach
+- This method randomly divides the available data into two parts
+    + the training sample is used for training the algorithm
+    + the validation sample is used for evaluating the performance of the algorithm
+    + the validation sample can play the role of “new data” as long as data are i.i.d..
+- A single data split yields a _validation_ estimate of the risk, and averaging over several splits yields a _cross-validation_ estimate.
+
+:::
+
+## Example of ICAM predictions (through KNN)
+
+::: {.absolute top="20%" left="10%" width="800" height="400"}
+::: {style="text-align: center"}
+![](validation.png)
+:::
+:::
+
+::: {style="font-size: 70%;"}
+::: {.absolute top="80%" left="20%"}
+Left panel shows single split; right panel shows multiple splits
+:::
+:::
+
+## Data splitting or Hold out - advantages 
+
+- The _validation approach_ is simple and easy to implement
+- It allows hypotheses to be confirmed in the test sample. 
+
+## Data splitting or Hold out - drawbacks 
+
+::: {style="font-size: 70%;"}
+
+- It reduces the sample size for both model development and model testing. 
+- It requires a larger sample to be held out than cross-validation to be able to obtain the same precision of the estimate of predictive accuracy.
+- The split may be fortuitous.
+- Data-splitting does not validate the final model, but rather a model developed on only a subset of the data. The training and test sets are recombined for fitting the final model, which is not validated.
+- Data-splitting requires the split before the first analysis of the data. 
+
+:::
+
+
+## Resampling methods
+- Underlying idea:
+    + analyses can proceed in the usual way on the complete dataset
+    + after a “final” model is specified, the modeling process is rerun on multiple resamples from the original data to mimic the process that produced the “final” model.
+    + by repeatedly randomly sample the data we attain a more robust measure of fit
+
+## Resampling methods
+- Resampling methods have become and integral tool in modern statistics. 
+- Resampling is based on repeatedly drawing samples from a training set of observations and refitting a model on each sample in order to obtain additional insights into that model. 
+- The goal for any resampling measure is to better estimate how a statistical model will perform on out of sample, 'real-life' data.
+
+## Resampling methods
+  * Cross-Validation
+  * Bootstrap
+  
+
+## Cross-validation
+- CV estimates the test error rate by holding out a subset of the training observations from the fitting process, and then applying the statistical method to those held out observations. 
+- This process can be repeated several times to enable more data to partake in the training of the model, one subset at a time.
